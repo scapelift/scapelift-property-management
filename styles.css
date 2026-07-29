@@ -66,11 +66,8 @@ img{display:block;max-width:100%}
   transition:box-shadow .3s ease;
 }
 .site-header.scrolled{box-shadow:0 8px 30px rgba(0,0,0,.5)}
-.brand{display:flex;flex-direction:column;justify-content:center;line-height:1;white-space:nowrap}
-.brand-name{position:relative;font-family:var(--font-d);font-size:1.42rem;font-weight:800;letter-spacing:-.055em;color:var(--white)}
-.brand-lift{color:var(--green)}
-.brand-leaf{position:absolute;top:-.18rem;right:-.5rem;width:.38rem;height:.62rem;border-radius:100% 0 100% 0;background:var(--green);transform:rotate(-32deg)}
-.brand-subtitle{margin-top:.22rem;font-family:var(--font-d);font-size:.45rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--green)}
+.brand{display:flex;align-items:center;flex:0 0 auto}
+.brand-logo{display:block;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);object-fit:contain}
 .nav{display:flex;gap:1.4rem;margin-left:auto;font-family:var(--font-d);font-weight:500;font-size:.92rem}
 .nav a{color:var(--grey);transition:color .18s ease}
 .nav a:hover{color:var(--pink-hi)}
@@ -168,7 +165,8 @@ img{display:block;max-width:100%}
 }
 @media(max-width:640px){
   .nav{display:none}
-  .site-header{gap:.75rem}
+  .site-header{gap:.65rem;padding-top:.45rem;padding-bottom:.45rem}
+  .brand-logo{width:58px;height:58px}
   .nav-cta{margin-left:auto}
   .hero{min-height:100vh;min-height:100svh;padding-top:3.5rem;padding-bottom:3.5rem}
   .hero-scrim{background:linear-gradient(0deg,rgba(11,11,12,.92) 10%,rgba(11,11,12,.55) 100%)}
