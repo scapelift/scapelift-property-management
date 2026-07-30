@@ -80,3 +80,14 @@ Do not copy example IP addresses into production. Netlify's domain panel is the 
 - Confirm HTTPS is valid on the Netlify URL and both custom-domain hostnames.
 - Confirm no unapproved wording, business claims, services, or technology changes were introduced.
 
+## Estimate form notifications
+
+The `estimate.html` page uses Netlify Forms with file uploads and a honeypot spam field.
+
+1. In Netlify, open **Forms** and enable form detection if it is not already enabled.
+2. Redeploy the site so Netlify detects the `estimate-request` form.
+3. Open **Project configuration > Notifications > Emails and webhooks > Form submission notifications**.
+4. Add an email notification for the `estimate-request` form and set the recipient to `thomas@scapeliftpm.com`.
+5. Submit one realistic test request and confirm the notification contains all fields and links to any uploaded photos.
+
+The form supplies a subject in the format `New Estimate Request - [Customer Name]`. Netlify Forms has an 8 MB maximum request size and supports one uploaded file per file field, so the page provides ten individual photo fields and validates their combined size before submission.

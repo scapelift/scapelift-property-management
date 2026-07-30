@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Free Estimate | ScapeLift Property Management</title>
+<meta name="description" content="Request a free property-care estimate from ScapeLift Property Management in Greater Lake Country, Wisconsin.">
+<link rel="icon" href="assets/company-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="estimate-page">
+
+<header class="site-header" id="header">
+  <a href="index.html" class="brand" aria-label="ScapeLift Property Management home">
+    <img src="assets/company-logo.png" alt="ScapeLift Property Management" class="brand-logo">
+  </a>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#work">Our Work</a>
+    <a href="index.html#homewatch">Home Watch</a>
+    <a href="index.html#eco">Our Approach</a>
+    <a href="index.html#area">Service Area</a>
+    <a href="estimate.html" aria-current="page">Request an Estimate</a>
+  </nav>
+  <a href="index.html" class="btn btn-pink nav-cta">Back to Home</a>
+</header>
+
+<main class="estimate-main">
+  <section class="estimate-intro" aria-labelledby="estimate-title">
+    <span class="eyebrow pink">Free Property Assessment</span>
+    <h1 id="estimate-title">Request a Free Estimate</h1>
+    <p>Complete the form below and tell us what your property needs. ScapeLift will review the details and contact you shortly to discuss your free estimate.</p>
+  </section>
+
+  <form
+    class="estimate-form"
+    id="estimateForm"
+    name="estimate-request"
+    method="POST"
+    enctype="multipart/form-data"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    novalidate
+  >
+    <input type="hidden" name="form-name" value="estimate-request">
+    <input type="hidden" name="subject" id="emailSubject" data-remove-prefix value="New Estimate Request">
+    <input type="hidden" name="Submitted At" id="submittedAt">
+    <p class="honeypot" aria-hidden="true">
+      <label>Leave this field blank <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+    </p>
+
+    <div class="estimate-grid">
+      <fieldset class="form-card">
+        <legend>Customer Information</legend>
+        <div class="field-grid">
+          <div class="form-field field-wide">
+            <label for="fullName">Full Name <span aria-hidden="true">*</span></label>
+            <input id="fullName" name="Full Name" type="text" autocomplete="name" minlength="2" maxlength="100" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+            <input id="phone" name="Phone Number" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" pattern="[0-9()+.\s-]{7,24}" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-card">
+        <legend>Property Information</legend>
+        <div class="field-grid">
+          <div class="form-field field-wide">
+            <label for="serviceAddress">Service Address <span aria-hidden="true">*</span></label>
+            <input id="serviceAddress" name="Service Address" type="text" autocomplete="street-address" maxlength="160" required>
+          </div>
+          <div class="form-field">
+            <label for="city">City <span aria-hidden="true">*</span></label>
+            <input id="city" name="City" type="text" autocomplete="address-level2" maxlength="80" required>
+          </div>
+          <div class="form-field">
+            <label for="zipCode">ZIP Code <span aria-hidden="true">*</span></label>
+            <input id="zipCode" name="ZIP Code" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="10" pattern="[0-9]{5}(-[0-9]{4})?" required>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <fieldset class="form-card form-card-full services-fieldset" id="servicesFieldset">
+      <legend>Services Needed <span aria-hidden="true">*</span></legend>
+      <p class="field-help">Select all that apply.</p>
+      <div class="choice-grid">
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Mowing &amp; Trimming"> <span>Mowing &amp; Trimming</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Mulch &amp; Bed Care"> <span>Mulch &amp; Bed Care</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Trees &amp; Shrubs"> <span>Trees &amp; Shrubs</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Weed Control"> <span>Weed Control</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Shoreline Care"> <span>Shoreline Care</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Garage Clean-Ups"> <span>Garage Clean-Ups</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Snow Removal"> <span>Snow Removal</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Seasonal Clean-Ups"> <span>Seasonal Clean-Ups</span></label>
+        <label class="choice"><input type="checkbox" name="Services Needed[]" value="Other" id="otherService"> <span>Other</span></label>
+      </div>
+      <p class="field-error" id="servicesError" aria-live="polite"></p>
+      <div class="form-field other-service-field" id="otherServiceField" hidden>
+        <label for="otherServiceDescription">Describe the requested service <span aria-hidden="true">*</span></label>
+        <input id="otherServiceDescription" name="Other Service Description" type="text" maxlength="300">
+      </div>
+    </fieldset>
+
+    <fieldset class="form-card form-card-full">
+      <legend>Description of Work</legend>
+      <div class="form-field">
+        <label for="workDescription">Project details</label>
+        <textarea id="workDescription" name="Description of Work" rows="7" maxlength="3000" placeholder="Tell us about the work you'd like completed. Include the areas of your property, any concerns, or the results you're hoping to achieve."></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-card form-card-full">
+      <legend>Property Photos <span class="optional">(Optional)</span></legend>
+      <p class="field-help">Photos help ScapeLift understand your property and prepare for the estimate. Upload up to 10 JPG, JPEG, PNG, HEIC, or WEBP images. The combined upload must be under 8 MB.</p>
+      <div class="photo-inputs" id="photoInputs">
+        <div class="form-field photo-field">
+          <label for="photo1">Photo 1</label>
+          <input id="photo1" name="Property Photo 1" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo2">Photo 2</label>
+          <input id="photo2" name="Property Photo 2" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo3">Photo 3</label>
+          <input id="photo3" name="Property Photo 3" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo4">Photo 4</label>
+          <input id="photo4" name="Property Photo 4" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo5">Photo 5</label>
+          <input id="photo5" name="Property Photo 5" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo6">Photo 6</label>
+          <input id="photo6" name="Property Photo 6" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo7">Photo 7</label>
+          <input id="photo7" name="Property Photo 7" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo8">Photo 8</label>
+          <input id="photo8" name="Property Photo 8" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo9">Photo 9</label>
+          <input id="photo9" name="Property Photo 9" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+        <div class="form-field photo-field" hidden>
+          <label for="photo10">Photo 10</label>
+          <input id="photo10" name="Property Photo 10" type="file" accept=".jpg,.jpeg,.png,.heic,.webp,image/jpeg,image/png,image/heic,image/webp">
+        </div>
+      </div>
+      <button type="button" class="btn btn-ghost add-photo-btn" id="addPhoto">Add Another Photo</button>
+      <p class="field-error" id="photoError" aria-live="polite"></p>
+    </fieldset>
+
+    <div class="estimate-grid">
+      <fieldset class="form-card">
+        <legend>Additional Notes</legend>
+        <div class="form-field">
+          <label for="additionalNotes">Access and scheduling details</label>
+          <textarea id="additionalNotes" name="Additional Notes" rows="7" maxlength="2000" placeholder="Include gate codes, pets, preferred contact times, HOA information, or any additional comments."></textarea>
+        </div>
+      </fieldset>
+
+      <div class="form-card form-card-stack">
+        <fieldset class="inline-fieldset">
+          <legend>Preferred Contact Method <span aria-hidden="true">*</span></legend>
+          <div class="radio-list">
+            <label class="choice"><input type="radio" name="Preferred Contact Method" value="Phone" required> <span>Phone</span></label>
+            <label class="choice"><input type="radio" name="Preferred Contact Method" value="Text Message"> <span>Text Message</span></label>
+            <label class="choice"><input type="radio" name="Preferred Contact Method" value="Email"> <span>Email</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="inline-fieldset">
+          <legend>Preferred Appointment Time <span aria-hidden="true">*</span></legend>
+          <div class="radio-list">
+            <label class="choice"><input type="radio" name="Preferred Appointment Time" value="Morning" required> <span>Morning</span></label>
+            <label class="choice"><input type="radio" name="Preferred Appointment Time" value="Afternoon"> <span>Afternoon</span></label>
+            <label class="choice"><input type="radio" name="Preferred Appointment Time" value="Evening"> <span>Evening</span></label>
+            <label class="choice"><input type="radio" name="Preferred Appointment Time" value="No Preference"> <span>No Preference</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="form-submit">
+      <p class="required-note"><span aria-hidden="true">*</span> Required fields</p>
+      <button type="submit" class="btn btn-pink btn-xl" id="submitEstimate">Request My Free Estimate</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite" tabindex="-1"></div>
+    </div>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <img src="assets/company-logo.png" alt="ScapeLift Property Management" class="footer-logo">
+  <p class="footer-tag">One Call – Any Season – Handled</p>
+  <p class="footer-meta">© <span id="year"></span> ScapeLift Property Management · Greater Lake Country, WI · <a href="mailto:thomas@scapeliftpm.com">thomas@scapeliftpm.com</a> · <a href="https://scapeliftpm.com/">scapeliftpm.com</a></p>
+</footer>
+
+<script src="script.js"></script>
+<script src="estimate.js"></script>
+</body>
+</html>
