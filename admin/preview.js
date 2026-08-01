@@ -1,5 +1,10 @@
 (function registerGalleryPreview() {
   const element = h;
+  const galleryEditorRoute = /\/collections\/finished_work_gallery\/entries\/gallery(?:[/?]|$)/;
+
+  function updateEditorScope() {
+    document.body.classList.toggle("finished-work-gallery-editor", galleryEditorRoute.test(window.location.hash));
+  }
 
   function read(record, key, fallback = "") {
     if (!record || typeof record.get !== "function") return fallback;
@@ -34,15 +39,18 @@
         { className: "work-grid" },
         ...galleryItems.map((item, index) => {
           const image = read(item, "image");
+          const alt = read(item, "alt");
+          const caption = read(item, "caption");
+          const imageSource = resolveImage(getAsset, image);
           return element(
             "figure",
-            { className: "work-card", key: `${image}-${index}` },
+            { className: "work-card", key: `${image}-${alt}-${caption}-${index}` },
             element("img", {
-              src: resolveImage(getAsset, image),
-              alt: read(item, "alt"),
+              src: imageSource,
+              alt,
               loading: "lazy",
             }),
-            element("figcaption", null, read(item, "caption")),
+            element("figcaption", null, caption),
           );
         }),
       ),
@@ -51,4 +59,6 @@
 
   CMS.registerPreviewStyle("/styles.css");
   CMS.registerPreviewTemplate("gallery", FinishedWorkGalleryPreview);
+  window.addEventListener("hashchange", updateEditorScope);
+  updateEditorScope();
 })();
