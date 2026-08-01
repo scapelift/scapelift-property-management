@@ -1,0 +1,39 @@
+{
+  "eyebrow": "What We Do",
+  "title": "Full-service property care, start to finish",
+  "intro": "From weekly mowing to the first snowfall, ScapeLift keeps your property sharp so you don't have to think about it.",
+  "items": [
+    {
+      "title": "Mowing & Trimming",
+      "description": "Clean, consistent weekly cuts and crisp edges that keep the whole property looking cared for."
+    },
+    {
+      "title": "Mulch & Bed Care",
+      "description": "Fresh mulch, tidy beds, and healthy plantings that make the front of the house pop."
+    },
+    {
+      "title": "Trees & Shrubs",
+      "description": "Shaping, trimming, and seasonal pruning to keep everything healthy and in proportion."
+    },
+    {
+      "title": "Weed Control",
+      "description": "Targeted, natural-first weed management along beds, walkways, and hardscape."
+    },
+    {
+      "title": "Shoreline Care",
+      "description": "Lakefront cleanup and maintenance that respects the water and keeps your frontage beautiful."
+    },
+    {
+      "title": "Garage Clean-Ups",
+      "description": "Haul-outs, organizing, and reset days that hand you back a garage you can actually use."
+    },
+    {
+      "title": "Snow Removal",
+      "description": "Reliable driveway and walkway clearing so you're never stuck when the snow flies."
+    },
+    {
+      "title": "Seasonal Clean-Ups",
+      "description": "Spring wake-ups and fall leaf & bed cleanups that bracket the whole growing season."
+    }
+  ]
+}

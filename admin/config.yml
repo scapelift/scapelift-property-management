@@ -1,0 +1,118 @@
+backend:
+  name: github
+  repo: scapelift/scapelift-property-management
+  branch: main
+  base_url: https://launchpanel-auth-service.patrickrrichardson.workers.dev
+  auth_endpoint: auth
+
+site_url: https://scapeliftpm.com
+display_url: https://scapeliftpm.com
+logo_url: https://scapeliftpm.com/assets/company-logo.png
+
+media_folder: assets/images
+public_folder: /assets/images
+
+collections:
+  - name: company_information
+    label: Company Information
+    format: json
+    files:
+      - name: company
+        label: Company Information
+        file: content/company.json
+        fields:
+          - { label: Company Name, name: name, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Website URL, name: websiteUrl, widget: string }
+          - { label: Website Label, name: websiteLabel, widget: string }
+          - { label: Service Area, name: serviceArea, widget: string }
+          - { label: Marketing Service Area, name: serviceAreaMarketing, widget: string }
+          - { label: Slogan, name: slogan, widget: string }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Image Alternative Text, name: imageAlt, widget: string }
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: string }
+              - label: Tagline Parts
+                name: taglineParts
+                widget: list
+                min: 1
+                field: { label: Part, name: part, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Button Label, name: buttonLabel, widget: string }
+              - { label: Button URL, name: buttonUrl, widget: string }
+              - { label: Note, name: note, widget: string }
+
+  - name: services
+    label: Services
+    format: json
+    files:
+      - name: services
+        label: Services
+        file: content/services.json
+        fields:
+          - { label: Eyebrow, name: eyebrow, widget: string }
+          - { label: Title, name: title, widget: string }
+          - { label: Introduction, name: intro, widget: text }
+          - label: Services
+            name: items
+            widget: list
+            min: 1
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+  - name: finished_work_gallery
+    label: Finished Work Gallery
+    format: json
+    files:
+      - name: gallery
+        label: Finished Work Gallery
+        file: content/gallery.json
+        fields:
+          - label: Section Introduction
+            name: section
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Introduction, name: intro, widget: text }
+          - { label: Gallery Heading, name: heading, widget: string }
+          - label: Images
+            name: items
+            widget: list
+            min: 1
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Alternative Text, name: alt, widget: string }
+              - { label: Caption, name: caption, widget: string }
+
+  - name: before_after_gallery
+    label: Before & After Gallery
+    format: json
+    files:
+      - name: before_after
+        label: Before & After Gallery
+        file: content/before-after.json
+        fields:
+          - label: Heading
+            name: heading
+            widget: object
+            fields:
+              - { label: Before Label, name: before, widget: string }
+              - { label: Separator, name: separator, widget: string }
+              - { label: After Label, name: after, widget: string }
+          - label: Projects
+            name: items
+            widget: list
+            min: 1
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Alternative Text, name: alt, widget: string }
+              - { label: Caption, name: caption, widget: string }

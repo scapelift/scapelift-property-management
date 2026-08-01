@@ -2,9 +2,6 @@
   const form = document.getElementById('estimateForm');
   if (!form) return;
 
-  const fullName = document.getElementById('fullName');
-  const subject = document.getElementById('emailSubject');
-  const submittedAt = document.getElementById('submittedAt');
   const servicesFieldset = document.getElementById('servicesFieldset');
   const serviceInputs = [...form.querySelectorAll('input[name="Services Needed[]"]')];
   const servicesError = document.getElementById('servicesError');
@@ -15,9 +12,7 @@
   const photoInputs = [...form.querySelectorAll('input[type="file"]')];
   const addPhoto = document.getElementById('addPhoto');
   const photoError = document.getElementById('photoError');
-  const submitButton = document.getElementById('submitEstimate');
   const status = document.getElementById('formStatus');
-  const startedAt = Date.now();
 
   const allowedExtensions = new Set(['jpg', 'jpeg', 'png', 'heic', 'webp']);
   const maxCombinedBytes = 7.5 * 1024 * 1024;
@@ -95,30 +90,17 @@
     status.focus();
   }
 
-  function resetDynamicFields() {
-    photoFields.forEach((field, index) => {
-      field.hidden = index !== 0;
-    });
-    addPhoto.hidden = false;
-    photoError.textContent = '';
-    servicesError.textContent = '';
-    updateOtherField();
-  }
-
   otherService.addEventListener('change', updateOtherField);
   serviceInputs.forEach(input => input.addEventListener('change', validateServices));
   photoInputs.forEach(input => input.addEventListener('change', validatePhotos));
   addPhoto.addEventListener('click', revealNextPhotoField);
   updateOtherField();
 
-  form.addEventListener('submit', async event => {
+  form.addEventListener('submit', event => {
     event.preventDefault();
     status.className = 'form-status';
     status.textContent = '';
     sanitizeInputs();
-
-    subject.value = `New Estimate Request - ${cleanText(fullName.value) || 'Customer'}`;
-    submittedAt.value = new Date().toISOString();
 
     const servicesValid = validateServices();
     const photosValid = validatePhotos();
@@ -131,30 +113,9 @@
       return;
     }
 
-    if (Date.now() - startedAt < 2500) {
-      showStatus('error', 'Please take a moment to review your information before submitting.');
-      return;
-    }
-
-    submitButton.disabled = true;
-    submitButton.textContent = 'Sending Request…';
-
-    try {
-      const response = await fetch('/', {
-        method: 'POST',
-        body: new FormData(form)
-      });
-      if (!response.ok) throw new Error(`Submission failed with status ${response.status}`);
-
-      form.reset();
-      resetDynamicFields();
-      showStatus('success', 'Thank you! Your estimate request was received. ScapeLift will contact you shortly.');
-    } catch (error) {
-      console.error('Estimate request submission failed:', error);
-      showStatus('error', 'We could not send your request right now. Please try again, or email thomas@scapeliftpm.com.');
-    } finally {
-      submitButton.disabled = false;
-      submitButton.textContent = 'Request My Free Estimate';
-    }
+    showStatus(
+      'error',
+      'Online estimate requests are temporarily unavailable. Please email thomas@scapeliftpm.com for assistance.'
+    );
   });
 })();

@@ -1,0 +1,19 @@
+{
+  "heading": {
+    "before": "Before",
+    "separator": "–",
+    "after": "After"
+  },
+  "items": [
+    {
+      "image": "assets/work/pair-mulch-refresh.jpg",
+      "alt": "Before and after: foundation bed mulch refresh",
+      "caption": "Foundation bed mulch refresh"
+    },
+    {
+      "image": "assets/work/pair-landscape-bed-refresh.jpg",
+      "alt": "Before and after: landscape bed refresh",
+      "caption": "Landscape Bed Refresh"
+    }
+  ]
+}

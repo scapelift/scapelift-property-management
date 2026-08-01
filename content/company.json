@@ -1,0 +1,24 @@
+{
+  "name": "ScapeLift Property Management",
+  "email": "thomas@scapeliftpm.com",
+  "websiteUrl": "https://scapeliftpm.com/",
+  "websiteLabel": "scapeliftpm.com",
+  "serviceArea": "Greater Lake Country, WI",
+  "serviceAreaMarketing": "Greater Lake Country Area",
+  "slogan": "One Call – Any Season – Handled",
+  "hero": {
+    "image": "assets/hero-lakeside-sod.jpeg",
+    "imageAlt": "Lakeside sod installation with fresh sod, docks, and a worker by the water",
+    "eyebrow": "Serving the Greater Lake Country Area",
+    "title": "Property Care You Can Count On.",
+    "taglineParts": [
+      "One Call",
+      "Any Season",
+      "Handled"
+    ],
+    "description": "Landscaping, snow removal, shoreline care, and premium Home Watch — from one local team you can actually reach. Lifting properties. Raising standards.",
+    "buttonLabel": "See What We Do",
+    "buttonUrl": "#services",
+    "note": "Free, no-pressure property assessment. Local & owner-operated."
+  }
+}
