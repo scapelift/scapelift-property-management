@@ -12,6 +12,7 @@ ScapeLift Property Management is a framework-free static website. The browser re
 - `script.js` controls the mobile navigation, sticky-header state, reveal effects, footer year, and gallery lightbox.
 - `estimate.js` controls estimate-form field validation, conditional service and photo inputs, and the temporary submission-unavailable message.
 - `content/*.json` is the editable source for company identity, services, Finished Work, and Before & After content.
+- `admin/` contains the Decap CMS Core entry point and collection configuration. Authentication requires an external GitHub OAuth proxy before the deployed editor can be used.
 - `assets/` stores general site imagery; `assets/work/` stores gallery and project imagery.
 
 ## Runtime flow

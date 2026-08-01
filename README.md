@@ -23,6 +23,7 @@ Then visit <http://localhost:8000/>. Before committing, check both pages at desk
 ├── styles.css              Shared layout and visual styles
 ├── script.js               Header, reveal, footer, and lightbox behavior
 ├── estimate.js             Estimate-form UI and client-side validation
+├── admin/                  Decap CMS entry point and configuration
 ├── content/                Editable business content in JSON
 │   ├── company.json
 │   ├── services.json
@@ -33,6 +34,7 @@ Then visit <http://localhost:8000/>. Before committing, check both pages at desk
 └── docs/
     ├── architecture.md     Technical structure and design boundaries
     ├── content-externalization-report.md
+    ├── decap-cms-report.md CMS configuration and authentication requirements
     ├── deployment.md       Current GitHub Pages deployment process
     ├── roadmap.md          Deferred work and migration sequence
     └── repository-cleanup-report.md

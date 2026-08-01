@@ -8,14 +8,14 @@
 4. Add a repeatable automated check for internal links, local assets, and JavaScript syntax.
 5. Document rollback and content-approval responsibilities.
 
-## Future Decap CMS migration
+## Decap CMS integration
 
-Phase 2 externalizes company, service, and gallery content into JSON, but Decap CMS integration has not started. Before implementation:
+Phase 2 externalized company, service, and gallery content into JSON. Phase 3 adds the core CMS files and collection mappings. Before production editing is enabled:
 
 - Confirm whether the remaining hardcoded Home Watch, trust-strip, approach, CTA, and On the Job content should also become editable.
 - Define media-library paths and filename rules.
 - Design content schemas for services, gallery entries, captions, and accessibility text.
-- Select and document the authentication approach supported by the production host.
+- Provision the external GitHub OAuth proxy described in `docs/decap-cms-report.md` and validate authenticated editing.
 - Preserve the current rendered appearance, URLs, navigation, and responsive behavior.
 - Plan migration and rollback tests before changing production content sources.
 
