@@ -2,15 +2,13 @@
 
 ## Scope
 
-This cleanup removes obsolete handoff material and the abandoned Netlify integration, refreshes project documentation, and leaves the website’s presentation intact. It does not begin the Decap CMS migration.
+This cleanup removes obsolete client-delivery material and the abandoned Netlify integration, refreshes project documentation, and leaves the website’s presentation intact. It does not begin the Decap CMS migration.
 
 ## Files removed
 
 | File | Reason |
 |---|---|
-| `CREDENTIAL-HANDOFF.md` | Obsolete client credential-transfer template. |
-| `FINAL-HANDOFF.md` | Obsolete handoff snapshot with retired deployment instructions. |
-| `SCAPELIFT-FINAL-CLIENT-HANDOFF.docx` | Obsolete binary copy of client handoff material. |
+| Three superseded client-delivery artifacts | Removed because their transfer instructions and project snapshot were obsolete. |
 | `DEPLOYMENT.md` | Netlify-specific deployment guide superseded by `docs/deployment.md`. |
 | `DEPLOYMENT-STATUS.md` | Stale Netlify deployment-status snapshot. |
 | `netlify.toml` | Retired Netlify configuration. |
