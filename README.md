@@ -23,10 +23,16 @@ Then visit <http://localhost:8000/>. Before committing, check both pages at desk
 ├── styles.css              Shared layout and visual styles
 ├── script.js               Header, reveal, footer, and lightbox behavior
 ├── estimate.js             Estimate-form UI and client-side validation
+├── content/                Editable business content in JSON
+│   ├── company.json
+│   ├── services.json
+│   ├── gallery.json
+│   └── before-after.json
 ├── assets/                 Logos, feature imagery, and gallery photos
 │   └── work/               Project and activity gallery assets
 └── docs/
     ├── architecture.md     Technical structure and design boundaries
+    ├── content-externalization-report.md
     ├── deployment.md       Current GitHub Pages deployment process
     ├── roadmap.md          Deferred work and migration sequence
     └── repository-cleanup-report.md

@@ -10,9 +10,9 @@
 
 ## Future Decap CMS migration
 
-The Decap CMS migration has not started as part of this cleanup. Before implementation:
+Phase 2 externalizes company, service, and gallery content into JSON, but Decap CMS integration has not started. Before implementation:
 
-- Identify exactly which page content should become editable.
+- Confirm whether the remaining hardcoded Home Watch, trust-strip, approach, CTA, and On the Job content should also become editable.
 - Define media-library paths and filename rules.
 - Design content schemas for services, gallery entries, captions, and accessibility text.
 - Select and document the authentication approach supported by the production host.

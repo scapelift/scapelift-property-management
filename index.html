@@ -33,8 +33,8 @@
 
 <!-- ===== HEADER ===== -->
 <header class="site-header" id="header">
-  <a href="#top" class="brand" aria-label="ScapeLift Property Management home">
-    <img src="assets/company-logo.png" alt="ScapeLift Property Management" class="brand-logo">
+  <a href="#top" class="brand" id="company-home-link">
+    <img src="assets/company-logo.png" alt="" class="brand-logo" id="header-company-logo">
   </a>
   <nav class="nav" aria-label="Primary">
     <a href="#services">Services</a>
@@ -49,18 +49,18 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="hero-media">
-    <img src="assets/hero-lakeside-sod.jpeg" alt="Lakeside sod installation with fresh sod, docks, and a worker by the water" loading="eager" fetchpriority="high">
+    <img id="hero-image" alt="" loading="eager" fetchpriority="high">
     <div class="hero-scrim"></div>
   </div>
   <div class="hero-inner">
-    <span class="eyebrow">Serving the Greater Lake Country Area</span>
-    <h1>Property Care You Can Count On.</h1>
-    <p class="hero-tag">One Call <span class="dash">–</span> Any Season <span class="dash">–</span> Handled</p>
-    <p class="hero-sub">Landscaping, snow removal, shoreline care, and premium Home Watch — from one local team you can actually reach. Lifting properties. Raising standards.</p>
+    <span class="eyebrow" id="hero-eyebrow"></span>
+    <h1 id="hero-title"></h1>
+    <p class="hero-tag" id="hero-tagline"></p>
+    <p class="hero-sub" id="hero-description"></p>
     <div class="hero-actions">
-      <a href="#services" class="btn btn-ghost btn-lg">See What We Do</a>
+      <a class="btn btn-ghost btn-lg" id="hero-button"></a>
     </div>
-    <p class="hero-note">Free, no-pressure property assessment. Local &amp; owner-operated.</p>
+    <p class="hero-note" id="hero-note"></p>
   </div>
 </section>
 
@@ -75,51 +75,26 @@
 <!-- ===== SERVICES ===== -->
 <section class="section" id="services">
   <div class="section-head">
-    <span class="eyebrow pink">What We Do</span>
-    <h2>Full-service property care, start to finish</h2>
-    <p class="lede">From weekly mowing to the first snowfall, ScapeLift keeps your property sharp so you don't have to think about it.</p>
+    <span class="eyebrow pink" id="services-eyebrow"></span>
+    <h2 id="services-title"></h2>
+    <p class="lede" id="services-intro"></p>
   </div>
-  <div class="svc-grid">
-    <article class="svc-card"><h3>Mowing &amp; Trimming</h3><p>Clean, consistent weekly cuts and crisp edges that keep the whole property looking cared for.</p></article>
-    <article class="svc-card"><h3>Mulch &amp; Bed Care</h3><p>Fresh mulch, tidy beds, and healthy plantings that make the front of the house pop.</p></article>
-    <article class="svc-card"><h3>Trees &amp; Shrubs</h3><p>Shaping, trimming, and seasonal pruning to keep everything healthy and in proportion.</p></article>
-    <article class="svc-card"><h3>Weed Control</h3><p>Targeted, natural-first weed management along beds, walkways, and hardscape.</p></article>
-    <article class="svc-card"><h3>Shoreline Care</h3><p>Lakefront cleanup and maintenance that respects the water and keeps your frontage beautiful.</p></article>
-    <article class="svc-card"><h3>Garage Clean-Ups</h3><p>Haul-outs, organizing, and reset days that hand you back a garage you can actually use.</p></article>
-    <article class="svc-card"><h3>Snow Removal</h3><p>Reliable driveway and walkway clearing so you're never stuck when the snow flies.</p></article>
-    <article class="svc-card"><h3>Seasonal Clean-Ups</h3><p>Spring wake-ups and fall leaf &amp; bed cleanups that bracket the whole growing season.</p></article>
-  </div>
+  <div class="svc-grid" id="services-grid"></div>
 </section>
 
 <!-- ===== OUR WORK ===== -->
 <section class="section work" id="work">
   <div class="section-head">
-    <span class="eyebrow pink">Our Work</span>
-    <h2>Real properties. Real results.</h2>
-    <p class="lede">Every one of these is a job we've actually done around Lake Country — no stock photos. Tap any image to see it full-size.</p>
+    <span class="eyebrow pink" id="work-eyebrow"></span>
+    <h2 id="work-title"></h2>
+    <p class="lede" id="work-intro"></p>
   </div>
 
-  <h3 class="work-subhead">Before <span class="dash">–</span> After</h3>
-  <div class="ba-grid">
-    <figure class="ba-card"><img src="assets/work/pair-mulch-refresh.jpg" alt="Before and after: foundation bed mulch refresh" loading="lazy"><figcaption>Foundation bed mulch refresh</figcaption></figure>
-    <figure class="ba-card"><img src="assets/work/pair-landscape-bed-refresh.jpg" alt="Before and after: landscape bed refresh" loading="lazy"><figcaption>Landscape Bed Refresh</figcaption></figure>
-  </div>
+  <h3 class="work-subhead" id="before-after-heading"></h3>
+  <div class="ba-grid" id="before-after-grid"></div>
 
-  <h3 class="work-subhead">Finished Work</h3>
-  <div class="work-grid">
-    <figure class="work-card"><img src="assets/work/finished-white-house-front.jpg" alt="Freshly mowed green lawn" loading="lazy"><figcaption>Freshly mowed lawn</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-stone-house-beds.jpg" alt="Manicured shrub beds along a stone-front home" loading="lazy"><figcaption>Shrub &amp; rock beds</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-walkway-entry.jpg" alt="New concrete walkway and brick entry" loading="lazy"><figcaption>Walkway &amp; entry</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-deck-wall.jpg" alt="Green deck with stacked stone retaining wall" loading="lazy"><figcaption>Deck &amp; retaining wall</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-lakefront-lawn.jpg" alt="Lush lakefront lawn and dock" loading="lazy"><figcaption>Lakefront lawn</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-tree-ring.jpg" alt="Stacked-stone tree ring with fresh mulch" loading="lazy"><figcaption>Stone tree ring</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-front-bed.jpg" alt="Fresh mulched front bed with new sod" loading="lazy"><figcaption>Mulch bed &amp; sod</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-shrub-trim.jpg" alt="Neatly trimmed foundation shrubs" loading="lazy"><figcaption>Shrub trimming</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-entry-beds.jpg" alt="Manicured entry beds with flowering hydrangeas" loading="lazy"><figcaption>Entry plantings</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-wooded-patio-bed.jpg" alt="Wooded backyard bed with stone edging and patio" loading="lazy"><figcaption>Wooded patio bed</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-walkway-plantings.jpg" alt="Front walkway bed with fresh plantings" loading="lazy"><figcaption>Walkway plantings</figcaption></figure>
-    <figure class="work-card"><img src="assets/work/finished-side-yard.jpg" alt="Manicured side yard with hostas" loading="lazy"><figcaption>Side yard care</figcaption></figure>
-  </div>
+  <h3 class="work-subhead" id="finished-work-heading"></h3>
+  <div class="work-grid" id="finished-work-grid"></div>
 
   <h3 class="work-subhead">On the Job</h3>
   <div class="action-strip">
@@ -131,7 +106,7 @@
 
   <div class="work-cta">
     <p>Want your property on this list?</p>
-    <a href="mailto:thomas@scapeliftpm.com" class="btn btn-pink">Get a Free Assessment</a>
+    <a href="mailto:thomas@scapeliftpm.com" class="btn btn-pink company-email-link">Get a Free Assessment</a>
   </div>
 </section>
 
@@ -158,7 +133,7 @@
       <li>Mail &amp; package collection</li>
       <li>Emailed photo reports after every visit</li>
     </ul>
-    <a href="mailto:thomas@scapeliftpm.com" class="btn btn-pink">Ask About Home Watch</a>
+    <a href="mailto:thomas@scapeliftpm.com" class="btn btn-pink company-email-link">Ask About Home Watch</a>
   </div>
 </section>
 
@@ -182,15 +157,15 @@
     <span class="eyebrow pink">Free Property Assessment</span>
     <h2>One call, and it's handled.</h2>
     <p>No pressure, no obligation. Tell us about your property and we'll put together a plan that fits.</p>
-    <p class="cta-note"><a href="mailto:thomas@scapeliftpm.com">Email us</a> · Serving the Greater Lake Country Area</p>
+    <p class="cta-note"><a href="mailto:thomas@scapeliftpm.com" class="company-email-link">Email us</a> · Serving the <span id="cta-service-area"></span></p>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
-  <img src="assets/company-logo.png" alt="ScapeLift Property Management" class="footer-logo">
-  <p class="footer-tag">One Call – Any Season – Handled</p>
-  <p class="footer-meta">© <span id="year"></span> ScapeLift Property Management · Greater Lake Country, WI · <a href="mailto:thomas@scapeliftpm.com">thomas@scapeliftpm.com</a> · <a href="https://scapeliftpm.com/">scapeliftpm.com</a></p>
+  <img src="assets/company-logo.png" alt="" class="footer-logo" id="footer-company-logo">
+  <p class="footer-tag" id="footer-tagline"></p>
+  <p class="footer-meta">© <span id="year"></span> <span id="footer-company-name"></span> · <span id="footer-service-area"></span> · <a id="footer-email"></a> · <a id="footer-website"></a></p>
 </footer>
 
 <script src="script.js"></script>

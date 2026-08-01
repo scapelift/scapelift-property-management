@@ -1,0 +1,70 @@
+{
+  "section": {
+    "eyebrow": "Our Work",
+    "title": "Real properties. Real results.",
+    "intro": "Every one of these is a job we've actually done around Lake Country — no stock photos. Tap any image to see it full-size."
+  },
+  "heading": "Finished Work",
+  "items": [
+    {
+      "image": "assets/work/finished-white-house-front.jpg",
+      "alt": "Freshly mowed green lawn",
+      "caption": "Freshly mowed lawn"
+    },
+    {
+      "image": "assets/work/finished-stone-house-beds.jpg",
+      "alt": "Manicured shrub beds along a stone-front home",
+      "caption": "Shrub & rock beds"
+    },
+    {
+      "image": "assets/work/finished-walkway-entry.jpg",
+      "alt": "New concrete walkway and brick entry",
+      "caption": "Walkway & entry"
+    },
+    {
+      "image": "assets/work/finished-deck-wall.jpg",
+      "alt": "Green deck with stacked stone retaining wall",
+      "caption": "Deck & retaining wall"
+    },
+    {
+      "image": "assets/work/finished-lakefront-lawn.jpg",
+      "alt": "Lush lakefront lawn and dock",
+      "caption": "Lakefront lawn"
+    },
+    {
+      "image": "assets/work/finished-tree-ring.jpg",
+      "alt": "Stacked-stone tree ring with fresh mulch",
+      "caption": "Stone tree ring"
+    },
+    {
+      "image": "assets/work/finished-front-bed.jpg",
+      "alt": "Fresh mulched front bed with new sod",
+      "caption": "Mulch bed & sod"
+    },
+    {
+      "image": "assets/work/finished-shrub-trim.jpg",
+      "alt": "Neatly trimmed foundation shrubs",
+      "caption": "Shrub trimming"
+    },
+    {
+      "image": "assets/work/finished-entry-beds.jpg",
+      "alt": "Manicured entry beds with flowering hydrangeas",
+      "caption": "Entry plantings"
+    },
+    {
+      "image": "assets/work/finished-wooded-patio-bed.jpg",
+      "alt": "Wooded backyard bed with stone edging and patio",
+      "caption": "Wooded patio bed"
+    },
+    {
+      "image": "assets/work/finished-walkway-plantings.jpg",
+      "alt": "Front walkway bed with fresh plantings",
+      "caption": "Walkway plantings"
+    },
+    {
+      "image": "assets/work/finished-side-yard.jpg",
+      "alt": "Manicured side yard with hostas",
+      "caption": "Side yard care"
+    }
+  ]
+}
