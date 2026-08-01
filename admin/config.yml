@@ -9,8 +9,8 @@ site_url: https://scapeliftpm.com
 display_url: https://scapeliftpm.com
 logo_url: https://scapeliftpm.com/assets/company-logo.png
 
-media_folder: assets/images
-public_folder: /assets/images
+media_folder: assets/work
+public_folder: /assets/work
 
 collections:
   - name: company_information
