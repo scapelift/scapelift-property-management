@@ -322,13 +322,7 @@ img{display:block;max-width:100%}
 .form-submit{text-align:center;padding-top:.6rem}
 .form-submit .btn{margin-top:.7rem}
 .form-status{display:none;max-width:720px;margin:1.2rem auto 0;padding:1rem 1.15rem;border-radius:12px;font-weight:600}
-.form-status.success{display:block;background:rgba(122,186,61,.12);border:1px solid var(--green);color:#d7f2bd}
 .form-status.error{display:block;background:rgba(230,69,163,.1);border:1px solid var(--pink);color:#ffc4e7}
-.honeypot{
-  position:absolute!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;
-  width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;border:0!important;
-}
-
 @media(max-width:900px){
   .estimate-grid{grid-template-columns:1fr}
   .choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}

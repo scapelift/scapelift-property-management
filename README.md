@@ -1,45 +1,49 @@
 # ScapeLift Property Management Website
 
-Static marketing website for ScapeLift Property Management, serving the Greater Lake Country Area.
+Static marketing website for ScapeLift Property Management. The site presents the company’s property-care services, project gallery, seasonal home-watch offering, and estimate-request interface.
 
-The production site is plain HTML, CSS, and JavaScript. It has no framework, package manager, build process, backend, or database. Open `index.html` directly in a browser to run it locally.
+The project uses plain HTML, CSS, and JavaScript. It has no framework, package manager, build step, application backend, or database.
 
-## Folder structure
+## Local development
+
+The pages can be opened directly in a browser, but a local static server more closely matches production behavior:
+
+```bash
+python3 -m http.server 8000
+```
+
+Then visit <http://localhost:8000/>. Before committing, check both pages at desktop and mobile widths, exercise the navigation and gallery lightbox, and confirm that every image loads.
+
+## Repository structure
 
 ```text
 .
-├── index.html          Page content and structure
-├── styles.css         Layout and brand styling
-├── script.js          Header, reveal, footer year, and lightbox behavior
-├── netlify.toml       Netlify publish configuration
-├── DEPLOYMENT.md      Hosting, domain, and maintenance procedures
-└── assets/
-    ├── *.png          Logos and hero imagery
-    └── work/          Before/after, finished-work, and action photos
+├── index.html              Main marketing page
+├── estimate.html           Estimate-request interface
+├── styles.css              Shared layout and visual styles
+├── script.js               Header, reveal, footer, and lightbox behavior
+├── estimate.js             Estimate-form UI and client-side validation
+├── assets/                 Logos, feature imagery, and gallery photos
+│   └── work/               Project and activity gallery assets
+└── docs/
+    ├── architecture.md     Technical structure and design boundaries
+    ├── deployment.md       Current GitHub Pages deployment process
+    ├── roadmap.md          Deferred work and migration sequence
+    └── repository-cleanup-report.md
 ```
 
-## Editing
+Use relative, case-sensitive asset paths. General site images belong in `assets/`; portfolio and project imagery belongs in `assets/work/`.
 
-- Edit page wording and structure in `index.html`.
-- Edit visual styles in `styles.css`.
-- Edit browser behavior in `script.js`.
-- Store general images in `assets/` and project-gallery images in `assets/work/`.
-- Use relative paths such as `assets/example.jpg`; capitalization must match the filename exactly.
-- Preserve the established branding and approved business information described in the project handoff.
+## Git workflow
 
-After editing, open `index.html` locally and check navigation, responsive layouts, all images, telephone links, scroll reveals, and the gallery lightbox.
+- `main` is the production branch.
+- Use a dedicated topic branch for each change and keep commits narrowly scoped.
+- Test locally before requesting review or merging.
+- Merge reviewed changes into `main`; do not force-push shared branches.
+- The existing `decap-cms` branch is reserved for future CMS preparation. This cleanup does not begin that migration.
 
-## Deployment
+## Deployment status
 
-Netlify should import the GitHub repository and deploy the repository root. There is no build command. The included `netlify.toml` sets the publish directory to `.`.
+The website is currently served as a static site through GitHub Pages at <https://scapeliftpm.com/>. The former Netlify deployment and configuration have been retired.
 
-1. Push changes to the production branch on GitHub.
-2. Netlify detects the commit and publishes it automatically.
-3. Confirm the deploy preview and production URL before considering the update complete.
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for initial connection, reconnection, custom-domain, DNS, and content-update procedures.
-
-## Hosting recommendation
-
-Netlify is recommended because it supports this static site directly, provides automatic HTTPS, deploy previews, atomic deployments, and automatic deployment from GitHub without adding a build system. GitHub Pages, Cloudflare Pages, Vercel, or a conventional static web host are also compatible.
-
+There is no build command or generated output: GitHub Pages serves the repository’s static files. The Estimate page remains available, but online submission is temporarily disabled until a replacement form-handling service is selected and implemented. See [docs/deployment.md](docs/deployment.md) for release verification and [docs/roadmap.md](docs/roadmap.md) for planned work.
