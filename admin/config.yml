@@ -2,8 +2,8 @@ backend:
   name: github
   repo: scapelift/scapelift-property-management
   branch: main
-  # GitHub Pages requires an external OAuth proxy. Add base_url only after
-  # that service is provisioned; see docs/decap-cms-report.md.
+  base_url: https://launchpanel-auth-service.patrickrrichardson.workers.dev
+  auth_endpoint: auth
 
 site_url: https://scapeliftpm.com
 display_url: https://scapeliftpm.com
