@@ -134,3 +134,35 @@ collections:
                 name: caption
                 widget: string
                 hint: This caption appears once beneath the Before and After images.
+
+  - name: on_the_job_gallery
+    label: On the Job
+    format: json
+    files:
+      - name: on_the_job
+        label: On the Job
+        file: content/on-the-job.json
+        fields:
+          - { label: Gallery Heading, name: heading, widget: string, required: true }
+          - label: Images
+            name: items
+            widget: list
+            min: 0
+            summary: "{{fields.caption}}"
+            hint: Drag entries to change their order. Add or remove entries as needed.
+            fields:
+              - label: Image
+                name: image
+                widget: image
+                required: true
+                hint: Choose an existing image or upload a replacement. For faster loading, images below approximately 2 MiB or 2560 pixels on the longest side are recommended.
+              - label: Alternative Text
+                name: alt
+                widget: string
+                required: true
+                hint: Describe what is visible in the image for visitors who cannot see it.
+              - label: Caption
+                name: caption
+                widget: string
+                required: true
+                hint: Enter the short label displayed over the image on the website.

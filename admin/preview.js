@@ -2,10 +2,12 @@
   const element = h;
   const galleryEditorRoute = /\/collections\/finished_work_gallery\/entries\/gallery(?:[/?]|$)/;
   const beforeAfterEditorRoute = /\/collections\/before_after_gallery\/entries\/before_after(?:[/?]|$)/;
+  const onTheJobEditorRoute = /\/collections\/on_the_job_gallery\/entries\/on_the_job(?:[/?]|$)/;
 
   function updateEditorScope() {
     document.body.classList.toggle("finished-work-gallery-editor", galleryEditorRoute.test(window.location.hash));
     document.body.classList.toggle("before-after-gallery-editor", beforeAfterEditorRoute.test(window.location.hash));
+    document.body.classList.toggle("on-the-job-gallery-editor", onTheJobEditorRoute.test(window.location.hash));
   }
 
   function read(record, key, fallback = "") {
@@ -118,9 +120,61 @@
     );
   }
 
+  function OnTheJobPreview({ entry, getAsset }) {
+    const data = entry.get("data");
+    const items = read(data, "items", null);
+    const galleryItems = items && typeof items.toArray === "function" ? items.toArray() : [];
+
+    return element(
+      "section",
+      { className: "section work" },
+      element("h3", { className: "work-subhead" }, read(data, "heading", "On the Job")),
+      galleryItems.length
+        ? element(
+            "div",
+            { className: "action-strip" },
+            ...galleryItems.map((item, index) => {
+              const image = read(item, "image");
+              const alt = read(item, "alt");
+              const caption = read(item, "caption");
+              const imageSource = resolveImage(getAsset, image);
+              return element(
+                "figure",
+                { className: "action-card", key: `${image}-${alt}-${caption}-${index}` },
+                imageSource
+                  ? element("img", { src: imageSource, alt, decoding: "async" })
+                  : element(
+                      "div",
+                      {
+                        className: "action-image-placeholder",
+                        style: {
+                          position: "absolute",
+                          inset: 0,
+                          display: "grid",
+                          placeItems: "center",
+                          padding: "1rem",
+                          color: "#b8b8b8",
+                          textAlign: "center",
+                        },
+                      },
+                      "Choose an image",
+                    ),
+                element("figcaption", null, caption || "Add a caption"),
+              );
+            }),
+          )
+        : element(
+            "p",
+            { style: { color: "#b8b8b8", padding: "1rem 0" } },
+            "Add an image to begin the On-the-Job gallery.",
+          ),
+    );
+  }
+
   CMS.registerPreviewStyle("/styles.css");
   CMS.registerPreviewTemplate("gallery", FinishedWorkGalleryPreview);
   CMS.registerPreviewTemplate("before_after", BeforeAfterGalleryPreview);
+  CMS.registerPreviewTemplate("on_the_job", OnTheJobPreview);
   window.addEventListener("hashchange", updateEditorScope);
   updateEditorScope();
 })();

@@ -1,6 +1,7 @@
 /* Editor-only sizing for image controls in gallery editors. */
 .finished-work-gallery-editor [aria-label="image widget"] div:has(> img[role="presentation"]),
-.before-after-gallery-editor [aria-label="image widget"] div:has(> img[role="presentation"]) {
+.before-after-gallery-editor [aria-label="image widget"] div:has(> img[role="presentation"]),
+.on-the-job-gallery-editor [aria-label="image widget"] div:has(> img[role="presentation"]) {
   flex-basis: 200px !important;
   width: min(200px, 100%) !important;
   max-width: 100%;

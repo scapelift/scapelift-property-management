@@ -1,0 +1,25 @@
+{
+  "heading": "On the Job",
+  "items": [
+    {
+      "image": "assets/work/action-stump-haul.jpg",
+      "alt": "Tractor loading a large tree stump onto a trailer",
+      "caption": "Stump haul-away"
+    },
+    {
+      "image": "assets/work/action-tree-ring-build.jpg",
+      "alt": "Building a stacked-stone tree ring",
+      "caption": "Building a tree ring"
+    },
+    {
+      "image": "assets/work/action-plow.jpg",
+      "alt": "Tractor plowing snow from a driveway",
+      "caption": "Snow plowing"
+    },
+    {
+      "image": "assets/work/action-driveway-plow.jpg",
+      "alt": "Freshly plowed driveway on a winter morning",
+      "caption": "Driveway clearing"
+    }
+  ]
+}

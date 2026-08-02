@@ -149,6 +149,19 @@ function renderBeforeAfter(beforeAfter) {
   document.getElementById('before-after-grid').replaceChildren(...cards);
 }
 
+function renderOnTheJob(onTheJob) {
+  setText('on-the-job-heading', onTheJob.heading);
+  const cards = onTheJob.items.map(item => {
+    const card = createGalleryCard(item, 'action-card');
+    const image = card.querySelector('img');
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', `View ${item.caption}`);
+    return card;
+  });
+  document.getElementById('on-the-job-grid').replaceChildren(...cards);
+}
+
 function shouldSkipBackgroundImagePreload() {
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   if (!connection) return false;
@@ -162,12 +175,23 @@ function preloadImageQueue(images, concurrency = 3) {
       const image = queue.shift();
       if (image.complete && image.naturalWidth > 0) continue;
 
+      image.fetchPriority = 'low';
+      image.loading = 'eager';
+
+      if (typeof image.decode === 'function') {
+        await image.decode().catch(() => {});
+        continue;
+      }
+
       await new Promise(resolve => {
-        const preloader = new Image();
-        preloader.decoding = 'async';
-        preloader.fetchPriority = 'low';
-        preloader.onload = preloader.onerror = resolve;
-        preloader.src = image.currentSrc || image.src;
+        const settle = () => {
+          image.removeEventListener('load', settle);
+          image.removeEventListener('error', settle);
+          resolve();
+        };
+        image.addEventListener('load', settle, { once: true });
+        image.addEventListener('error', settle, { once: true });
+        if (image.complete) settle();
       });
     }
   });
@@ -282,6 +306,14 @@ async function renderExternalContent() {
   renderBeforeAfter(beforeAfter);
 }
 
+async function renderOnTheJobContent() {
+  try {
+    renderOnTheJob(await loadJson('content/on-the-job.json'));
+  } catch (error) {
+    console.error('Unable to render On-the-Job content:', error);
+  }
+}
+
 function initializeSiteBehaviors() {
   initializeMobileNavigation();
   const year = document.getElementById('year');
@@ -334,10 +366,18 @@ function initializeSiteBehaviors() {
   }
 
   document.querySelectorAll('#work figure img').forEach(image => {
-    image.addEventListener('click', () => {
+    const openImage = () => {
       const caption = image.closest('figure')?.querySelector('figcaption');
       openLightbox(image.src, caption ? caption.textContent : image.alt, image.alt);
-    });
+    };
+    image.addEventListener('click', openImage);
+    if (image.matches('.action-card img')) {
+      image.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openImage();
+      });
+    }
   });
 
   lightboxClose.addEventListener('click', closeLightbox);
@@ -356,6 +396,7 @@ async function initialize() {
     } catch (error) {
       console.error('Unable to render website content:', error);
     }
+    await renderOnTheJobContent();
   }
   initializeSiteBehaviors();
   scheduleDisplayedImagePreload();
