@@ -88,6 +88,7 @@ function createGalleryCard(item, className) {
   image.src = item.image;
   image.alt = item.alt;
   image.loading = 'lazy';
+  image.decoding = 'async';
 
   const caption = document.createElement('figcaption');
   caption.textContent = item.caption;
@@ -134,6 +135,7 @@ function renderBeforeAfter(beforeAfter) {
       image.src = side.image;
       image.alt = side.alt;
       image.loading = 'lazy';
+      image.decoding = 'async';
 
       panel.append(label, image);
       pair.append(panel);
@@ -256,7 +258,7 @@ function initializeSiteBehaviors() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px 360px 0px' });
     elements.forEach(element => observer.observe(element));
     setTimeout(() => elements.forEach(element => element.classList.add('in')), 2500);
   }
