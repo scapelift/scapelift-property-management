@@ -246,6 +246,12 @@ img{display:block;max-width:100%}
 }
 .ba-side:last-child .ba-label{color:var(--pink-hi)}
 .ba-card img{display:block;width:100%;height:auto;cursor:pointer}
+@media(min-width:901px){
+  .ba-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ba-pair{aspect-ratio:2/1}
+  .ba-side{overflow:hidden}
+  .ba-card img{height:100%;object-fit:contain}
+}
 .ba-image-placeholder{
   display:grid;place-items:center;min-height:220px;padding:1rem;
   color:var(--grey-dim);background:var(--black);text-align:center;
