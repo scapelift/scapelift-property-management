@@ -147,6 +147,78 @@ function renderBeforeAfter(beforeAfter) {
   document.getElementById('before-after-grid').replaceChildren(...cards);
 }
 
+function initializeMobileNavigation() {
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-navigation');
+  if (!toggle || !menu || toggle.dataset.initialized === 'true') return;
+
+  toggle.dataset.initialized = 'true';
+  const desktopQuery = window.matchMedia('(min-width: 901px)');
+
+  function isOpen() {
+    return toggle.getAttribute('aria-expanded') === 'true';
+  }
+
+  function openMenu() {
+    menu.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation menu');
+  }
+
+  function closeMenu(restoreFocus = false) {
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    if (restoreFocus && !desktopQuery.matches) toggle.focus();
+  }
+
+  toggle.addEventListener('click', () => {
+    if (isOpen()) closeMenu();
+    else openMenu();
+  });
+
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', event => {
+      const destination = new URL(link.href, window.location.href);
+      const isSamePageAnchor =
+        destination.origin === window.location.origin &&
+        destination.pathname === window.location.pathname &&
+        destination.search === window.location.search &&
+        destination.hash;
+
+      if (!isSamePageAnchor) {
+        closeMenu();
+        return;
+      }
+
+      const target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+      if (!target) {
+        closeMenu();
+        return;
+      }
+
+      event.preventDefault();
+      closeMenu(true);
+      history.pushState(null, '', destination.hash);
+      target.scrollIntoView();
+    });
+  });
+
+  document.addEventListener('pointerdown', event => {
+    if (isOpen() && !toggle.closest('.site-header')?.contains(event.target)) closeMenu(true);
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && isOpen()) closeMenu(true);
+  });
+
+  desktopQuery.addEventListener('change', event => {
+    if (event.matches) closeMenu();
+  });
+
+  closeMenu();
+}
+
 async function renderExternalContent() {
   const [company, services, gallery, beforeAfter] = await Promise.all([
     loadJson('content/company.json'),
@@ -162,6 +234,7 @@ async function renderExternalContent() {
 }
 
 function initializeSiteBehaviors() {
+  initializeMobileNavigation();
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
