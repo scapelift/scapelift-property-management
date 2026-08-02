@@ -1,9 +1,11 @@
 (function registerGalleryPreview() {
   const element = h;
   const galleryEditorRoute = /\/collections\/finished_work_gallery\/entries\/gallery(?:[/?]|$)/;
+  const beforeAfterEditorRoute = /\/collections\/before_after_gallery\/entries\/before_after(?:[/?]|$)/;
 
   function updateEditorScope() {
     document.body.classList.toggle("finished-work-gallery-editor", galleryEditorRoute.test(window.location.hash));
+    document.body.classList.toggle("before-after-gallery-editor", beforeAfterEditorRoute.test(window.location.hash));
   }
 
   function read(record, key, fallback = "") {
@@ -57,8 +59,68 @@
     );
   }
 
+  function BeforeAfterGalleryPreview({ entry, getAsset }) {
+    const data = entry.get("data");
+    const heading = read(data, "heading", null);
+    const items = read(data, "items", null);
+    const projects = items && typeof items.toArray === "function" ? items.toArray() : [];
+    const beforeLabel = read(heading, "before", "Before");
+    const afterLabel = read(heading, "after", "After");
+
+    function renderSide(item, imageKey, altKey, label) {
+      const image = read(item, imageKey);
+      const alt = read(item, altKey);
+      const imageSource = resolveImage(getAsset, image);
+      return element(
+        "div",
+        { className: "ba-side" },
+        element("span", { className: "ba-label" }, label),
+        imageSource
+          ? element("img", { src: imageSource, alt })
+          : element("div", { className: "ba-image-placeholder" }, `Choose a ${label} image`),
+      );
+    }
+
+    return element(
+      "section",
+      { className: "section work" },
+      element(
+        "h3",
+        { className: "work-subhead" },
+        beforeLabel,
+        " ",
+        element("span", { className: "dash" }, read(heading, "separator", "–")),
+        " ",
+        afterLabel,
+      ),
+      element(
+        "div",
+        { className: "ba-grid" },
+        ...projects.map((item, index) => {
+          const beforeImage = read(item, "beforeImage");
+          const beforeAlt = read(item, "beforeAlt");
+          const afterImage = read(item, "afterImage");
+          const afterAlt = read(item, "afterAlt");
+          const caption = read(item, "caption");
+          return element(
+            "figure",
+            { className: "ba-card", key: `${beforeImage}-${beforeAlt}-${afterImage}-${afterAlt}-${caption}-${index}` },
+            element(
+              "div",
+              { className: "ba-pair" },
+              renderSide(item, "beforeImage", "beforeAlt", beforeLabel),
+              renderSide(item, "afterImage", "afterAlt", afterLabel),
+            ),
+            element("figcaption", null, caption),
+          );
+        }),
+      ),
+    );
+  }
+
   CMS.registerPreviewStyle("/styles.css");
   CMS.registerPreviewTemplate("gallery", FinishedWorkGalleryPreview);
+  CMS.registerPreviewTemplate("before_after", BeforeAfterGalleryPreview);
   window.addEventListener("hashchange", updateEditorScope);
   updateEditorScope();
 })();

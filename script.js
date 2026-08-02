@@ -112,7 +112,38 @@ function renderBeforeAfter(beforeAfter) {
   separator.textContent = beforeAfter.heading.separator;
   heading.replaceChildren(beforeAfter.heading.before, ' ', separator, ' ', beforeAfter.heading.after);
 
-  const cards = beforeAfter.items.map(item => createGalleryCard(item, 'ba-card'));
+  const cards = beforeAfter.items.map(item => {
+    const figure = document.createElement('figure');
+    figure.className = 'ba-card';
+
+    const pair = document.createElement('div');
+    pair.className = 'ba-pair';
+
+    [
+      { label: beforeAfter.heading.before, image: item.beforeImage, alt: item.beforeAlt },
+      { label: beforeAfter.heading.after, image: item.afterImage, alt: item.afterAlt }
+    ].forEach(side => {
+      const panel = document.createElement('div');
+      panel.className = 'ba-side';
+
+      const label = document.createElement('span');
+      label.className = 'ba-label';
+      label.textContent = side.label;
+
+      const image = document.createElement('img');
+      image.src = side.image;
+      image.alt = side.alt;
+      image.loading = 'lazy';
+
+      panel.append(label, image);
+      pair.append(panel);
+    });
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = item.caption;
+    figure.append(pair, caption);
+    return figure;
+  });
   document.getElementById('before-after-grid').replaceChildren(...cards);
 }
 
@@ -164,9 +195,9 @@ function initializeSiteBehaviors() {
   const lightboxCaption = document.getElementById('lbCap');
   const lightboxClose = document.getElementById('lbClose');
 
-  function openLightbox(src, caption) {
+  function openLightbox(src, caption, alt) {
     lightboxImage.src = src;
-    lightboxImage.alt = caption || '';
+    lightboxImage.alt = alt || '';
     lightboxCaption.textContent = caption || '';
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -180,11 +211,10 @@ function initializeSiteBehaviors() {
     lightboxImage.src = '';
   }
 
-  document.querySelectorAll('#work figure').forEach(figure => {
-    figure.addEventListener('click', () => {
-      const image = figure.querySelector('img');
-      const caption = figure.querySelector('figcaption');
-      if (image) openLightbox(image.src, caption ? caption.textContent : image.alt);
+  document.querySelectorAll('#work figure img').forEach(image => {
+    image.addEventListener('click', () => {
+      const caption = image.closest('figure')?.querySelector('figcaption');
+      openLightbox(image.src, caption ? caption.textContent : image.alt, image.alt);
     });
   });
 

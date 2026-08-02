@@ -112,7 +112,25 @@ collections:
             widget: list
             min: 1
             summary: "{{fields.caption}}"
+            hint: Add one Before image and one After image for each project. Both images are required before publishing.
             fields:
-              - { label: Image, name: image, widget: image }
-              - { label: Alternative Text, name: alt, widget: string }
-              - { label: Caption, name: caption, widget: string }
+              - label: Before Image
+                name: beforeImage
+                widget: image
+                hint: Choose the photo showing the project before work began.
+              - label: Before Image Description
+                name: beforeAlt
+                widget: string
+                hint: Briefly describe what is visible in the Before photo for visitors who cannot see it.
+              - label: After Image
+                name: afterImage
+                widget: image
+                hint: Choose the photo showing the completed project.
+              - label: After Image Description
+                name: afterAlt
+                widget: string
+                hint: Briefly describe what is visible in the After photo for visitors who cannot see it.
+              - label: Project Caption
+                name: caption
+                widget: string
+                hint: This caption appears once beneath the Before and After images.

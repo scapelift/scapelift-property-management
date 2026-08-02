@@ -187,13 +187,26 @@ img{display:block;max-width:100%}
 
 /* before/after pairs */
 .ba-grid{display:grid;grid-template-columns:1fr;gap:1.3rem}
-@media(min-width:780px){.ba-grid{grid-template-columns:1fr 1fr}}
 .ba-card{
   background:var(--panel);border:1px solid var(--border);border-radius:14px;
-  overflow:hidden;cursor:pointer;transition:transform .18s ease,border-color .18s ease;
+  overflow:hidden;transition:transform .18s ease,border-color .18s ease;
 }
 .ba-card:hover{transform:translateY(-3px);border-color:var(--pink)}
-.ba-card img{width:100%;height:auto;aspect-ratio:1808/970;object-fit:cover}
+.ba-pair{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+@media(min-width:640px){.ba-pair{grid-template-columns:1fr 1fr}}
+.ba-side{position:relative;min-width:0;background:var(--black)}
+.ba-label{
+  position:absolute;z-index:1;top:.75rem;left:.75rem;padding:.38rem .62rem;
+  border-radius:7px;background:rgba(12,13,13,.9);color:#fff;
+  font-family:var(--font-d);font-size:.75rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.ba-side:last-child .ba-label{color:var(--pink-hi)}
+.ba-card img{display:block;width:100%;height:auto;cursor:pointer}
+.ba-image-placeholder{
+  display:grid;place-items:center;min-height:220px;padding:1rem;
+  color:var(--grey-dim);background:var(--black);text-align:center;
+}
 .ba-card figcaption{
   padding:.75rem 1rem;font-family:var(--font-d);font-weight:700;font-size:.98rem;
 }

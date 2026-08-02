@@ -6,13 +6,17 @@
   },
   "items": [
     {
-      "image": "assets/work/pair-mulch-refresh.jpg",
-      "alt": "Before and after: foundation bed mulch refresh",
+      "beforeImage": "assets/work/IMG_0274.jpg",
+      "beforeAlt": "Bare soil bed around a flagpole beside a concrete walkway",
+      "afterImage": "assets/work/IMG_0327.jpg",
+      "afterAlt": "Freshly mulched flagpole bed with new flowering plants beside a concrete walkway",
       "caption": "Foundation bed mulch refresh"
     },
     {
-      "image": "assets/work/pair-landscape-bed-refresh.jpg",
-      "alt": "Before and after: landscape bed refresh",
+      "beforeImage": "assets/work/landscape-bed-refresh-before.jpg",
+      "beforeAlt": "Overgrown rock bed with shrubs beneath the front window of a gray house",
+      "afterImage": "assets/work/landscape-bed-refresh-after.jpg",
+      "afterAlt": "Tidied rock bed with four trimmed shrubs beneath the front window of a gray house",
       "caption": "Landscape Bed Refresh"
     }
   ]
