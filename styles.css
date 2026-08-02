@@ -171,6 +171,7 @@ img{display:block;max-width:100%}
 /* ---- reveal (only hides once JS is confirmed running) ---- */
 .js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .js-ready .reveal.in{opacity:1;transform:none}
+.js-ready .ba-card.reveal,.js-ready .work-card.reveal,.js-ready .action-card.reveal{transition-duration:.2s}
 
 /* ===== responsive ===== */
 @media(max-width:900px){

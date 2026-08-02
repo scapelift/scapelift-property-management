@@ -149,6 +149,53 @@ function renderBeforeAfter(beforeAfter) {
   document.getElementById('before-after-grid').replaceChildren(...cards);
 }
 
+function shouldSkipBackgroundImagePreload() {
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (!connection) return false;
+  return connection.saveData === true || ['slow-2g', '2g'].includes(connection.effectiveType);
+}
+
+function preloadImageQueue(images, concurrency = 3) {
+  const queue = [...images];
+  const workers = Array.from({ length: Math.min(concurrency, queue.length) }, async () => {
+    while (queue.length) {
+      const image = queue.shift();
+      if (image.complete && image.naturalWidth > 0) continue;
+
+      await new Promise(resolve => {
+        const preloader = new Image();
+        preloader.decoding = 'async';
+        preloader.fetchPriority = 'low';
+        preloader.onload = preloader.onerror = resolve;
+        preloader.src = image.currentSrc || image.src;
+      });
+    }
+  });
+  return Promise.all(workers);
+}
+
+function scheduleDisplayedImagePreload() {
+  if (shouldSkipBackgroundImagePreload()) return;
+
+  const start = async () => {
+    const priorityImages = [...document.querySelectorAll('.ba-card img, .work-card img')];
+    const remainingImages = [...document.querySelectorAll('.action-card img, .hw-media img')];
+    await preloadImageQueue(priorityImages);
+    await preloadImageQueue(remainingImages);
+  };
+
+  const scheduleWhenIdle = () => {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(start, { timeout: 1500 });
+    } else {
+      setTimeout(start, 250);
+    }
+  };
+
+  if (document.readyState === 'complete') scheduleWhenIdle();
+  else addEventListener('load', scheduleWhenIdle, { once: true });
+}
+
 function initializeMobileNavigation() {
   const toggle = document.getElementById('nav-toggle');
   const menu = document.getElementById('mobile-navigation');
@@ -311,6 +358,7 @@ async function initialize() {
     }
   }
   initializeSiteBehaviors();
+  scheduleDisplayedImagePreload();
 }
 
 initialize();
