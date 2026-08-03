@@ -60,7 +60,7 @@ img{display:block;max-width:100%}
 .site-header{
   position:sticky;top:0;z-index:50;
   display:flex;align-items:center;gap:1.5rem;
-  padding:.7rem clamp(1rem,4vw,2.5rem);
+  padding:0 clamp(1rem,4vw,2.5rem);
   background:rgba(11,11,12,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
   transition:box-shadow .3s ease;
@@ -202,7 +202,7 @@ img{display:block;max-width:100%}
 }
 @media(max-width:640px){
   .nav{display:none}
-  .site-header{gap:.65rem;padding-top:.45rem;padding-bottom:.45rem}
+  .site-header{gap:.65rem}
   .brand-logo{width:auto;height:58px}
   .nav-toggle{margin-left:auto}
   .hero{min-height:100vh;min-height:100svh;padding-top:3.5rem;padding-bottom:3.5rem}
